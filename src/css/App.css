@@ -37,10 +37,24 @@
     }
 }
 
+.search-results {
+    padding-top: 20px;
+}
 
-/*.search-header {*/
-/*    background-image: url('https://d2wi4faa4xtq37.cloudfront.net/sites/default/files/images/KariusBloom2small.jpg');*/
-/*    background-position: left; !* Center the image *!*/
-/*    background-repeat: no-repeat; !* Do not repeat the image *!*/
-/*    background-size: contain; !* Resize the background image to cover the entire container *!*/
-/*}*/
+.search-results h5 {
+    color: #1d6fa5;
+    font-weight: bolder;
+}
+
+.main-content {
+    background-image: url('https://d2wi4faa4xtq37.cloudfront.net/sites/default/files/images/KariusBloom2small.jpg');
+    background-position: left top;
+    background-repeat: no-repeat; /* Do not repeat the image */
+
+    background-size: 400px; /* Resize the background image to cover the entire container */
+    min-height: 420px;
+}
+
+.top-container {
+    background-color: rgba(255, 255, 255, 0.5);
+}

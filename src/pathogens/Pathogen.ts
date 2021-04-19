@@ -4,6 +4,8 @@ import {PathogenSequence} from "./PathogenSequence";
 
 const sha1 = require('sha1');
 
+//this class actually represents pathogen metadata, due to the potential size of the sequences they are stored seperately.  See pathogen sequence. 
+
 export class Pathogen
 {
   id: string = uuidv4();
@@ -36,8 +38,8 @@ export class Pathogen
     pathogen.clinicalSymptoms = data.clinicalSymptoms;
     pathogen.tags = data.tags;
     pathogen.sequenceId = data.sequenceId;
-    pathogen.sequenceSHA1 = data.tags;
-    pathogen.sequenceLength = data.tags;
+    pathogen.sequenceSHA1 = data.sequenceSHA1;
+    pathogen.sequenceLength = data.sequenceLength;
     pathogen.created = data.created?.toDate();
     pathogen.updated = data.updated?.toDate();
     return pathogen;
@@ -53,7 +55,7 @@ export class Pathogen
     pathogen.family = family;
     pathogen.viralFactor = viralFactor;
     pathogen.clinicalSymptoms = clinicalSymptoms;
-    pathogen.tags = tags;
+    pathogen.tags = tags ? tags : [""];
     if (sequence) {
       pathogen.sequenceLength = sequence.length;
       pathogen.sequenceSHA1 = sha1(sequence);

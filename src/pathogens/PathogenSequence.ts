@@ -1,6 +1,6 @@
 import {v4 as uuidv4} from 'uuid';
 import firebase from 'firebase';
-
+ //the sequence itself, represented as a string
 export class PathogenSequence
 {
   id: string = uuidv4();

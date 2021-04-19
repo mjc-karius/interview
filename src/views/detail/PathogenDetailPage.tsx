@@ -1,12 +1,15 @@
 import React from "react";
-import {Jumbotron, Navbar} from "react-bootstrap";
+import {Jumbotron} from "react-bootstrap";
 import {useDocument} from "react-firebase-hooks/firestore";
 import firebase from "firebase/app";
 import {useRouteMatch} from "react-router";
-import {Pathogen} from "../Pathogen";
+import {Pathogen} from "../../pathogens/Pathogen";
 import {PathogenDetail} from "./PathogenDetail";
-import {EditPathogen} from "../../edit/EditPathogen";
+import {EditPathogen} from "../edit/EditPathogen";
 
+
+
+//top level detail page component for displaying and editing information about a single pathogen.
 
 const PathogenDetailPage = () =>
 {
