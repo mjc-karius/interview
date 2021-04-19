@@ -18,11 +18,11 @@ export class PathogenSequence
     }
   }
 
-  persist()
+  async persist()
   {
     const data = this.toJson();
     data.updated = new Date();
-    firebase.firestore().collection('pathogenSequences').doc(this.id).set(data).then(res => console.log("persist complete", res));
+    return firebase.firestore().collection('pathogenSequences').doc(this.id).set(data);
   }
 
 

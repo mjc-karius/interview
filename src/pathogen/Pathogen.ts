@@ -10,7 +10,7 @@ export class Pathogen
   commonName: string = "";
   scientificName: string = "";
   family: string = "";
-  viralFactor: string = "";
+  viralFactor: number = 0;
   clinicalSymptoms: string = "";
   tags: [string] = [""];
   sequenceId: string = "";
@@ -19,7 +19,32 @@ export class Pathogen
   created: Date = new Date();
   updated: Date = new Date();
 
-  static fromUserData(commonName: string, scientificName: string, family: string, viralFactor: string, clinicalSymptoms: string, tags: [string], sequence: string)
+  static fromFirestore(docData: firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData> | undefined)
+  {
+    const pathogen = new Pathogen();
+    if (!docData) {
+      return pathogen;
+    }
+    const data = docData.data();
+    if (!data) return pathogen;
+
+    pathogen.id = docData.id;
+    pathogen.commonName = data.commonName;
+    pathogen.scientificName = data.scientificName;
+    pathogen.family = data.family;
+    pathogen.viralFactor = data.viralFactor;
+    pathogen.clinicalSymptoms = data.clinicalSymptoms;
+    pathogen.tags = data.tags;
+    pathogen.sequenceId = data.sequenceId;
+    pathogen.sequenceSHA1 = data.tags;
+    pathogen.sequenceLength = data.tags;
+    pathogen.created = data.created?.toDate();
+    pathogen.updated = data.updated?.toDate();
+    return pathogen;
+
+  }
+
+  static fromUserData(commonName: string, scientificName: string, family: string, viralFactor: number, clinicalSymptoms: string, tags: [string], sequence: string)
   {
     const pathogen = new Pathogen();
 
@@ -50,11 +75,11 @@ export class Pathogen
     }
   }
 
-  persist()
+  async persist()
   {
     const data = this.toJson();
     data.updated = new Date();
-    firebase.firestore().collection('pathogens').doc(this.id).set(data).then(res => console.log("persist complete", res));
+    return firebase.firestore().collection('pathogens').doc(this.id).set(data)
   }
 
 
