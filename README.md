@@ -4,6 +4,13 @@
 
 This proof of concept application is meant to provide a first pass at a design for a pathogen management system. In order to provide a functioning demo, the firebase set of mobile application services was leveraged.      The API schema is implemented as 2 typescript classes located in src/pathogens.  Once class represents the pathogen and its metadata, the other represents the sequence itself. The seperation is for queryability,  and to pave the way for better representations of the sequence, possibly using other technologies. 
 
+### Usage
+You can search and see listings of the already entered pathogens on the main page https://karius-technical-interview.web.app/  .  Notice that this is a live updating view, if you create or edit a pathogen in another tab or browser it will update on this page as soon as you save your changes.     This page is accessible by clicking search in the navbar.   
+
+Clicking on a pathogen from the search page will take you to the pathogens detail page. The detail page has all of the information about a pathogen currently available, and a link to edit the pathogen. 
+
+You can create a new pathogen by clicking create in the navbar,   or visiting  https://karius-technical-interview.web.app/create
+
 ## Assumptions
 
 Because of the proof of concept / technical interview nature of this application and its specifications, I made many assumptions.  Had this been a real application, I would have worked much more closely with the stakeholders / product team to get a better understanding of what was desired. 

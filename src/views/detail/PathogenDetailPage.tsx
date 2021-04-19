@@ -16,8 +16,6 @@ const PathogenDetailPage = () =>
   const match = useRouteMatch('/pathogens/:pathogenID/:component?');
   // @ts-ignore - skipping defining param types for this detail for now in order to keep moving.
   const {pathogenID, component}: string = match.params;
-  console.log('gotta match', match)
-
 
   const query = firebase.firestore().collection('pathogens').doc(pathogenID);
   const [pathogenRef, loading, error] = useDocument(query)

@@ -15,7 +15,6 @@ const SequenceFileInput = ({setSequenceCallback}: SequenceFileInputProps) =>
   const handleFileRead = () =>
   {
     const content = fileReader.result as string;
-    console.log(content)
     if (content) {
       //validate content to come later
       setSequence(content);

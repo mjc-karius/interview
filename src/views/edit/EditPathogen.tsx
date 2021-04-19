@@ -44,12 +44,10 @@ const EditPathogen = ({pathogen}: EditPathogenProps) =>
       //process user entries
       let pathogenID = pathogen ? pathogen.id : "";
       const tags = options.map(opt => opt.value) as [string];
-      console.log('tags:', tags)
       if (!pathogen) { // creation
         const newPathogen = Pathogen.fromUserData(values.commonName || '', values.scientificName || '', values.family || '', values.viralFactor, values.clinicalSymptoms || '', tags, sequence ? sequence : "" || '');
         await newPathogen.persist();
         pathogenID = newPathogen.id;
-        console.log('creation', values);
       }
       else { //editing existing
         pathogen.commonName = values.commonName;
@@ -127,7 +125,7 @@ const EditPathogen = ({pathogen}: EditPathogenProps) =>
         </Form.Group>
         <Form.Group as={Col} xs={12} controlId="sequence">
           <Form.Label>Tags</Form.Label>
-          <Creatable options={makeOptions(initialPathogen)} isMulti onChange={(option) =>
+          <Creatable  value={options} isMulti onChange={(option) =>
           {
             // @ts-ignore
             setOptions(option);
